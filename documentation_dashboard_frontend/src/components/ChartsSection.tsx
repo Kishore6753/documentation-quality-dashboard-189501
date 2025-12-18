@@ -51,9 +51,9 @@ function Sparkline({
     <div className="sparkline" role="img" aria-label={ariaLabel}>
       <svg viewBox={`0 0 ${w} ${h}`} width="100%" height="100%" preserveAspectRatio="none">
         {/* grid */}
-        <line x1={padX} y1={h - padY} x2={w - padX} y2={h - padY} stroke="rgba(17,24,39,0.12)" />
-        <line x1={padX} y1={padY} x2={w - padX} y2={padY} stroke="rgba(17,24,39,0.06)" />
-        <line x1={padX} y1={h / 2} x2={w - padX} y2={h / 2} stroke="rgba(17,24,39,0.06)" />
+        <line x1={padX} y1={h - padY} x2={w - padX} y2={h - padY} stroke="rgba(229,231,235,0.16)" />
+        <line x1={padX} y1={padY} x2={w - padX} y2={padY} stroke="rgba(229,231,235,0.10)" />
+        <line x1={padX} y1={h / 2} x2={w - padX} y2={h / 2} stroke="rgba(229,231,235,0.10)" />
 
         {/* area */}
         <path
@@ -106,7 +106,7 @@ export function ChartsSection({ coverage, freshness }: Props) {
             </div>
             <Sparkline
               values={coverageValues}
-              color="rgba(59,130,246,1)"
+              color="var(--color-primary)"
               yMin={0}
               yMax={100}
               unitLabel="%"
@@ -124,7 +124,7 @@ export function ChartsSection({ coverage, freshness }: Props) {
             </div>
             <Sparkline
               values={freshValues}
-              color="rgba(6,182,212,1)"
+              color="var(--color-success)"
               yMin={0}
               yMax={freshMax + 1}
               ariaLabel="Freshness updates chart"
