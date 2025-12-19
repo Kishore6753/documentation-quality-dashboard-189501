@@ -192,6 +192,50 @@ kbd {
   color: var(--color-muted);
 }
 
+/* Icons */
+.icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: inline-block;
+  color: currentColor; /* inherit text color by default */
+}
+
+.iconSm {
+  width: 14px;
+  height: 14px;
+}
+
+.iconLg {
+  width: 18px;
+  height: 18px;
+}
+
+.iconPrimary {
+  color: var(--color-primary);
+}
+
+.iconSuccess {
+  color: var(--color-success);
+}
+
+.iconMuted {
+  color: var(--color-muted);
+}
+
+.iconBadge {
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.16);
+  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.18), rgba(6, 182, 212, 0.10));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  color: rgba(59, 130, 246, 0.95);
+}
+
 /* Main content area */
 .content {
   flex: 1;

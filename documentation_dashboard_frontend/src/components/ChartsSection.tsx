@@ -6,6 +6,64 @@ type Props = {
   freshness: FreshnessPoint[];
 };
 
+function TrendUpIcon({
+  className,
+  title,
+  "aria-hidden": ariaHidden,
+}: {
+  className?: string;
+  title?: string;
+  "aria-hidden"?: boolean;
+}) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      role={ariaHidden ? "presentation" : "img"}
+      aria-hidden={ariaHidden}
+    >
+      {title ? <title>{title}</title> : null}
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+      <polyline points="17 6 23 6 23 12" />
+    </svg>
+  );
+}
+
+function BarChartIcon({
+  className,
+  title,
+  "aria-hidden": ariaHidden,
+}: {
+  className?: string;
+  title?: string;
+  "aria-hidden"?: boolean;
+}) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      role={ariaHidden ? "presentation" : "img"}
+      aria-hidden={ariaHidden}
+    >
+      {title ? <title>{title}</title> : null}
+      <line x1="12" y1="20" x2="12" y2="10" />
+      <line x1="18" y1="20" x2="18" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+      <line x1="3" y1="20" x2="21" y2="20" />
+    </svg>
+  );
+}
+
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
@@ -91,7 +149,10 @@ export function ChartsSection({ coverage, freshness }: Props) {
   return (
     <div className="panel" aria-label="Charts section">
       <div className="panelHeader">
-        <div className="panelTitle">Trends</div>
+        <div className="panelTitle" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <TrendUpIcon className="icon iconSm iconPrimary" aria-hidden={true} />
+          Trends
+        </div>
         <span className="pill">Last {Math.max(coverage.length, freshness.length)} points</span>
       </div>
       <div className="panelBody">
@@ -99,7 +160,10 @@ export function ChartsSection({ coverage, freshness }: Props) {
           <div className="chartWrap">
             <div className="chartTitleRow">
               <div>
-                <div style={{ fontWeight: 800, fontSize: 13 }}>Coverage over time</div>
+                <div style={{ fontWeight: 800, fontSize: 13, display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <TrendUpIcon className="icon iconSm iconPrimary" aria-hidden={true} title="Coverage trend" />
+                  Coverage over time
+                </div>
                 <div className="small muted">Percent of required docs present</div>
               </div>
               <span className="pill pillPrimary">Coverage</span>
@@ -117,7 +181,10 @@ export function ChartsSection({ coverage, freshness }: Props) {
           <div className="chartWrap">
             <div className="chartTitleRow">
               <div>
-                <div style={{ fontWeight: 800, fontSize: 13 }}>Freshness</div>
+                <div style={{ fontWeight: 800, fontSize: 13, display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <BarChartIcon className="icon iconSm iconSuccess" aria-hidden={true} title="Freshness updates" />
+                  Freshness
+                </div>
                 <div className="small muted">Updates per time bucket</div>
               </div>
               <span className="pill pillSuccess">Freshness</span>
